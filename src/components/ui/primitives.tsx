@@ -1,6 +1,10 @@
 import { cn } from "@/lib/cn";
-import Link from "next/link";
 import type { ReactNode } from "react";
+
+import { FadeIn } from "@/components/animations/FadeIn";
+import { CtaLink } from "@/components/ui/cta-link";
+
+export { CtaLink };
 
 /** Uppercase gold section label. */
 export function Eyebrow({
@@ -37,65 +41,38 @@ export function PageHero({
   titleClassName?: string;
 }) {
   return (
-    <section className="bg-navy text-cream">
+    <section className="relative overflow-hidden bg-navy text-cream">
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 bg-[radial-gradient(ellipse_70%_50%_at_20%_0%,rgba(198,160,82,0.14),transparent_55%),radial-gradient(ellipse_50%_40%_at_90%_30%,rgba(120,160,220,0.08),transparent_50%)]"
+      />
       <div
         className={cn(
-          "mx-auto px-6 py-[84px] sm:px-8",
+          "relative mx-auto px-6 py-[84px] sm:px-8",
           narrow ? "max-w-[1000px]" : "max-w-[1240px]",
         )}
       >
-        <Eyebrow>{eyebrow}</Eyebrow>
-        <h1
-          className={cn(
-            "mt-3.5 font-serif text-[52px] font-medium leading-[1.08] tracking-[-0.8px] max-md:text-[38px]",
-            titleClassName,
-          )}
-        >
-          {title}
-        </h1>
+        <FadeIn delay={0.05}>
+          <Eyebrow>{eyebrow}</Eyebrow>
+        </FadeIn>
+        <FadeIn delay={0.12} y={20} blur>
+          <h1
+            className={cn(
+              "mt-3.5 font-serif text-[52px] font-medium leading-[1.08] tracking-[-0.8px] max-md:text-[38px]",
+              titleClassName,
+            )}
+          >
+            {title}
+          </h1>
+        </FadeIn>
         {subtitle ? (
-          <p className="mt-4 max-w-[640px] text-[16px] leading-[1.6] text-[#ccd5e2]">
-            {subtitle}
-          </p>
+          <FadeIn delay={0.22}>
+            <p className="mt-4 max-w-[640px] text-[16px] leading-[1.6] text-[#ccd5e2]">
+              {subtitle}
+            </p>
+          </FadeIn>
         ) : null}
       </div>
     </section>
-  );
-}
-
-type ButtonTone = "gold" | "navy" | "outline-dark" | "outline-light";
-
-const toneClasses: Record<ButtonTone, string> = {
-  gold: "bg-gold text-navy hover:bg-gold-hover",
-  navy: "bg-navy text-cream hover:bg-navy-deep",
-  "outline-dark":
-    "border border-white/30 text-cream hover:border-gold hover:text-gold",
-  "outline-light":
-    "border border-navy text-navy hover:bg-navy hover:text-cream",
-};
-
-/** Sharp-cornered CTA link matching the design's buttons. */
-export function CtaLink({
-  href,
-  tone = "gold",
-  className,
-  children,
-}: {
-  href: string;
-  tone?: ButtonTone;
-  className?: string;
-  children: ReactNode;
-}) {
-  return (
-    <Link
-      href={href}
-      className={cn(
-        "inline-flex items-center justify-center rounded-[2px] font-sans font-semibold transition-colors",
-        toneClasses[tone],
-        className,
-      )}
-    >
-      {children}
-    </Link>
   );
 }
