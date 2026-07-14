@@ -22,6 +22,18 @@ pnpm check-types
 
 Copy `.env.example` to `.env.local` for local overrides.
 
+## Deploy (Vercel)
+
+Import [aimonk-io/equityliveresearch](https://github.com/aimonk-io/equityliveresearch)
+in Vercel. `vercel.json` pins pnpm install/build and the `bom1` (Mumbai) region.
+
+Set these environment variables in the Vercel project:
+
+| Variable | Production value |
+| --- | --- |
+| `APP_ENV` | `production` |
+| `NEXT_PUBLIC_SITE_URL` | `https://equityliveresearch.com` |
+
 ## Before launch — fill in `src/config/site.ts`
 
 All company details and page content live in
