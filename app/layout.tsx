@@ -4,6 +4,7 @@ import "./globals.css";
 import type { Metadata } from "next";
 import { Archivo, Newsreader } from "next/font/google";
 
+import { Providers } from "@/components/animations/Providers";
 import { RiskBand } from "@/components/layout/risk-band";
 import { SiteFooter } from "@/components/layout/site-footer";
 import { SiteHeader } from "@/components/layout/site-header";
@@ -67,10 +68,12 @@ export default function RootLayout({
       <body
         className={`${archivo.variable} ${newsreader.variable} flex min-h-svh flex-col overflow-x-hidden antialiased`}
       >
-        <SiteHeader />
-        <main className="flex-1">{children}</main>
-        <RiskBand />
-        <SiteFooter />
+        <Providers>
+          <SiteHeader />
+          <main className="flex-1">{children}</main>
+          <RiskBand />
+          <SiteFooter />
+        </Providers>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
