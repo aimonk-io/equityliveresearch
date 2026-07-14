@@ -1,0 +1,95 @@
+@import "tailwindcss";
+
+@source "../src/**/*.{ts,tsx}";
+@source "./**/*.{ts,tsx}";
+
+/*
+ * Equity Live Research brand — editorial navy + gold, matching the
+ * approved Claude Design (EquityLiveResearch.dc.html). All brand colors
+ * and fonts are declared here as design tokens; components reference the
+ * generated utilities (bg-navy, text-gold, font-serif, …) — never raw hex.
+ */
+@theme {
+  --font-sans: var(--font-archivo), ui-sans-serif, system-ui, sans-serif;
+  --font-serif: var(--font-newsreader), Georgia, "Times New Roman", serif;
+
+  --color-cream: #f6f3ec;
+  --color-cream-card: #fbf9f4;
+  --color-cream-panel: #f0ebe0;
+  --color-navy: #0e1f38;
+  --color-navy-deep: #0a1728;
+  --color-ink: #172230;
+  --color-gold: #c6a052;
+  --color-gold-hover: #d3ae63;
+  --color-line: #e4ddce;
+  --color-line-soft: #e8e1d2;
+  --color-line-strong: #e0d8c8;
+  --color-muted-ink: #495462;
+  --color-faint: #77828f;
+  --color-up: #7fc99a;
+  --color-down: #e08f7f;
+}
+
+@keyframes elrTicker {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes elrUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  html,
+  body {
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  body {
+    background: var(--color-cream);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  ::selection {
+    background: var(--color-gold);
+    color: #fff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
