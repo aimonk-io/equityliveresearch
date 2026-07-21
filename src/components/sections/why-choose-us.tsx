@@ -7,7 +7,7 @@ import { Eyebrow } from "@/components/ui/primitives";
 import { whyUs } from "@/config/site";
 import { cn } from "@/lib/cn";
 
-const highlightTitles = new Set(["Transparent", "Regular updates"]);
+const highlightTitles = new Set(["Transparent"]);
 
 export function WhyChooseUs() {
   return (
@@ -20,7 +20,7 @@ export function WhyChooseUs() {
             Built for investors who value process over promises.
           </h2>
         </FadeIn>
-        <div className="mt-12 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-5">
+        <div className="mt-12 grid gap-px border border-white/10 bg-white/10 sm:grid-cols-2 lg:grid-cols-4">
           {whyUs.map((w, i) => {
             const highlight = highlightTitles.has(w.title);
             return (

@@ -1,7 +1,7 @@
 # Equity Live Research
 
 Public marketing website for **EquityLiveResearch** ([equityliveresearch.com](https://equityliveresearch.com)),
-a SEBI-registered Indian equity research & portfolio advisory firm.
+an Indian equity research & portfolio advisory firm.
 
 Editorial navy + gold aesthetic (Newsreader serif + Archivo). Fully static —
 no auth, no middleware, no backend.
@@ -43,7 +43,6 @@ All company details and page content live in
 - [ ] `email`
 - [ ] `officeCity` / `officeCountry`
 - [ ] `legalName`
-- [ ] `sebiRegNo` (**required**)
 - [ ] Wire or clearly label illustrative `ticker` / `snapshot` data
 - [ ] Add `public/og.png` (1200×630) and reference it in `app/layout.tsx`
 - [ ] Set `NEXT_PUBLIC_SITE_URL=https://equityliveresearch.com` in production
@@ -57,5 +56,5 @@ The callback form validates client-side and shows a thank-you state — it does
 
 - Returns are always **"expected"** and **market-linked** — never "guaranteed"
   or "assured".
-- SEBI-mandated disclaimer sentences in the footer / risk band must not be
+- Do not claim SEBI registration. Risk-band disclaimer sentences must not be
   paraphrased.

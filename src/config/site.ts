@@ -1,8 +1,8 @@
 /**
  * Equity Live Research — single source of truth for company details and
  * all page content. Mirrors the approved Claude Design
- * (EquityLiveResearch.dc.html). Replace the placeholder contact/regulatory
- * values (phone, email, SEBI reg. no., office) before launch.
+ * (EquityLiveResearch.dc.html). Replace the placeholder contact
+ * values (phone, email, office) before launch.
  *
  * Compliance rule for all copy: returns are always "expected" and
  * market-linked — never "guaranteed" or "assured".
@@ -14,9 +14,9 @@ export const siteConfig = {
   url: "https://equityliveresearch.com",
   tagline: "Indian Equity Research",
   description:
-    "SEBI Registered Research Analyst offering disciplined, research-driven equity investment and portfolio advisory for the Indian markets — institutional-grade research, transparent reporting and rigorous risk management.",
+    "Disciplined, research-driven equity investment and portfolio advisory for the Indian markets — institutional-grade research, transparent reporting and rigorous risk management.",
 
-  // ── Contact / regulatory (placeholders — fill before launch) ────────
+  // ── Contact (placeholders — fill before launch) ─────────────────────
   phone: "+919800000000",
   phoneDisplay: "+91 98XXX XXXXX",
   phoneHours: "Mon–Sat, 9:30 AM – 6:00 PM IST",
@@ -24,7 +24,6 @@ export const siteConfig = {
   websiteDisplay: "equityliveresearch.com",
   officeCity: "Mumbai, Maharashtra",
   officeCountry: "India",
-  sebiRegNo: "INH000XXXXXX",
 } as const;
 
 export const navItems = [
@@ -109,8 +108,7 @@ export const whyUs = [
   { n: "01", title: "Research-driven", desc: "Every call backed by analysis, not tips or momentum." },
   { n: "02", title: "Risk-managed", desc: "Professional risk controls on every position." },
   { n: "03", title: "Transparent", desc: "Honest, jargon-free reporting you can verify." },
-  { n: "04", title: "Regular updates", desc: "Your portfolio reviewed and updated on schedule." },
-  { n: "05", title: "Dedicated support", desc: "A named advisor who knows your goals." },
+  { n: "04", title: "Dedicated support", desc: "A named advisor who knows your goals." },
 ] as const;
 
 export const testimonials = [
@@ -216,8 +214,8 @@ export const faqs = [
     a: "No. Expected returns are indicative figures based on historical market performance. They are not guaranteed and actual returns depend on prevailing market conditions. Investments in securities are subject to market risks.",
   },
   {
-    q: "Are you SEBI registered?",
-    a: `Yes. EquityLiveResearch operates as a SEBI Registered Research Analyst (Reg. No. ${siteConfig.sebiRegNo}). SEBI registration does not guarantee performance or assure returns.`,
+    q: "Are you SEBI Registered?",
+    a: "No. We are currently not registered with SEBI. Our services are intended for educational and market research purposes only and do not constitute personalized investment advice.",
   },
   {
     q: "Who are your services suitable for?",
@@ -255,6 +253,7 @@ export const riskDisclosures = [
   "Investments in securities are subject to market risks. Read all related documents carefully before investing.",
   "Past performance is not indicative of and does not guarantee future returns or performance.",
   "Expected returns depend on prevailing market conditions and are not assured. No profit is guaranteed.",
+  "EquityLiveResearch is not currently SEBI registered. Content is for educational and market research purposes only and does not constitute personalized investment advice.",
 ] as const;
 
 export const interestOptions = [

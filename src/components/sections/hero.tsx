@@ -39,7 +39,7 @@ export function Hero() {
               aria-hidden
               className="size-1.5 animate-[elrPulse_2.4s_ease-in-out_infinite] rounded-full bg-gold"
             />
-            SEBI Registered Research Analyst
+            Indian Equity Research
           </m.span>
 
           <h1 className="mt-[26px] font-serif text-[60px] font-medium leading-[1.05] tracking-[-1px] max-md:text-[40px]">
