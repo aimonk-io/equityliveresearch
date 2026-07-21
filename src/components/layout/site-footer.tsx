@@ -29,7 +29,7 @@ export function SiteFooter() {
           <FadeIn>
             <div>
               <div className="flex items-center gap-3">
-                <BrandMark size={32} fontSize={17} />
+                <BrandMark size={32} />
                 <Wordmark className="font-serif text-[19px] text-cream" />
               </div>
               <p className="mt-[18px] max-w-[300px] text-[13.5px] leading-[1.7] text-[#8f9bb0]">
