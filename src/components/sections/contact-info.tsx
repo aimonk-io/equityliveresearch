@@ -82,9 +82,12 @@ export function ContactInfo() {
             Compliance
           </div>
           <p className="mt-2.5 text-[13.5px] leading-[1.65] text-[#b2bcce]">
-            SEBI Registered Research Analyst · Reg. No. {siteConfig.sebiRegNo}.
-            Registration with SEBI and certification from NISM do not guarantee
-            performance or assure returns.
+            We are currently not SEBI Registered. We provide market research and
+            educational insights for informational purposes only. Our content
+            should not be considered personalized investment advice or a
+            guarantee of returns. Investors should conduct their own research and
+            consult a SEBI-registered Investment Adviser or Research Analyst
+            before making investment decisions.
           </p>
         </div>
       </FadeIn>

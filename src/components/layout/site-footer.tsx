@@ -34,7 +34,7 @@ export function SiteFooter() {
               </div>
               <p className="mt-[18px] max-w-[300px] text-[13.5px] leading-[1.7] text-[#8f9bb0]">
                 Research-driven equity investment and portfolio advisory for the
-                Indian markets. SEBI Registered Research Analyst.
+                Indian markets.
               </p>
             </div>
           </FadeIn>
@@ -100,7 +100,6 @@ export function SiteFooter() {
           <span>
             © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
           </span>
-          <span>SEBI RA Reg. No. {siteConfig.sebiRegNo} · NISM Certified</span>
         </div>
       </div>
     </footer>

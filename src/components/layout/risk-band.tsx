@@ -18,7 +18,7 @@ export function RiskBand() {
             Risk Disclosure
           </div>
         </FadeIn>
-        <div className="mt-[18px] grid gap-7 md:grid-cols-3">
+        <div className="mt-[18px] grid gap-7 sm:grid-cols-2 lg:grid-cols-4">
           {riskDisclosures.map((text, i) => (
             <FadeIn key={text} delay={0.08 * i} blur y={14}>
               <p className="text-[13px] leading-[1.6] text-[#5b5340]">{text}</p>
