@@ -1,8 +1,9 @@
 /**
  * Equity Live Research — single source of truth for company details and
  * all page content. Mirrors the approved Claude Design
- * (EquityLiveResearch.dc.html). Replace the placeholder contact
- * values (phone, email, office) before launch.
+ * (EquityLiveResearch.dc.html).
+ *
+ * Contact details match the company visiting card.
  *
  * Compliance rule for all copy: returns are always "expected" and
  * market-linked — never "guaranteed" or "assured".
@@ -10,21 +11,38 @@
 
 export const siteConfig = {
   name: "EquityLiveResearch",
-  legalName: "EquityLiveResearch",
+  legalName: "Equity Live Research Pvt. Ltd.",
+  cin: "U66190WR2026PTC296910",
   url: "https://equityliveresearch.com",
   tagline: "Indian Equity Research",
   description:
     "Disciplined, research-driven equity investment and portfolio advisory for the Indian markets — institutional-grade research, transparent reporting and rigorous risk management.",
 
-  // ── Contact (placeholders — fill before launch) ─────────────────────
-  phone: "+919800000000",
-  phoneDisplay: "+91 98XXX XXXXX",
+  phone: "+918250955725",
+  phoneDisplay: "+91 82509 55725",
   phoneHours: "Mon–Sat, 9:30 AM – 6:00 PM IST",
   email: "hello@equityliveresearch.com",
-  websiteDisplay: "equityliveresearch.com",
-  officeCity: "Mumbai, Maharashtra",
-  officeCountry: "India",
+  websiteDisplay: "www.equityliveresearch.com",
+  office: {
+    line1: "DL Infinity, 4th Floor",
+    street: "Sevoke Road",
+    city: "Siliguri",
+    district: "Darjeeling",
+    region: "West Bengal",
+    postalCode: "734001",
+    country: "India",
+    countryCode: "IN",
+  },
 } as const;
+
+export const officeAddress = [
+  siteConfig.office.line1,
+  siteConfig.office.street,
+  `${siteConfig.office.city} ${siteConfig.office.postalCode}`,
+  siteConfig.office.district,
+  siteConfig.office.region,
+  siteConfig.office.country,
+].join(", ");
 
 export const navItems = [
   { key: "home", label: "Home", href: "/" },
@@ -245,8 +263,13 @@ export const values_about = {
 export const contactRows = [
   { label: "Phone", value: siteConfig.phoneDisplay, sub: siteConfig.phoneHours },
   { label: "Email", value: siteConfig.email, sub: "We reply within one business day" },
-  { label: "Website", value: siteConfig.websiteDisplay, sub: "Research notes & client portal" },
-  { label: "Office", value: siteConfig.officeCity, sub: siteConfig.officeCountry },
+  { label: "Website", value: siteConfig.websiteDisplay, sub: "Official website" },
+  {
+    label: "Office",
+    value: `${siteConfig.office.line1}, ${siteConfig.office.street}`,
+    sub: `${siteConfig.office.city} ${siteConfig.office.postalCode}, ${siteConfig.office.district}, ${siteConfig.office.region}, ${siteConfig.office.country}`,
+  },
+  { label: "CIN", value: siteConfig.cin, sub: siteConfig.legalName },
 ] as const;
 
 export const riskDisclosures = [

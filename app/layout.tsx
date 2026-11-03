@@ -97,11 +97,18 @@ const jsonLd = {
       image: `${siteConfig.url}/opengraph-image`,
       logo: `${siteConfig.url}/icon.svg`,
       areaServed: { "@type": "Country", name: "India" },
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "CIN",
+        value: siteConfig.cin,
+      },
       address: {
         "@type": "PostalAddress",
-        addressLocality: "Mumbai",
-        addressRegion: "Maharashtra",
-        addressCountry: "IN",
+        streetAddress: `${siteConfig.office.line1}, ${siteConfig.office.street}`,
+        addressLocality: siteConfig.office.city,
+        addressRegion: siteConfig.office.region,
+        postalCode: siteConfig.office.postalCode,
+        addressCountry: siteConfig.office.countryCode,
       },
       knowsAbout: [
         "Indian equity markets",

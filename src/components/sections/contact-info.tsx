@@ -3,16 +3,19 @@
 import { useCallback, useState } from "react";
 
 import { FadeIn } from "@/components/animations/FadeIn";
-import { contactRows, siteConfig } from "@/config/site";
+import { contactRows, officeAddress, siteConfig } from "@/config/site";
 import { cn } from "@/lib/cn";
 
 const hrefFor: Record<string, (v: string) => string | undefined> = {
   Phone: () => `tel:${siteConfig.phone}`,
   Email: () => `mailto:${siteConfig.email}`,
-  Website: () => `https://${siteConfig.websiteDisplay}`,
+  Website: () => siteConfig.url,
+  Office: () =>
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(officeAddress)}`,
 };
 
-const copyable = new Set(["Phone", "Email", "Website", "Office"]);
+const copyable = new Set(["Phone", "Email", "Website", "Office", "CIN"]);
+const external = new Set(["Website", "Office"]);
 
 export function ContactInfo() {
   const [copied, setCopied] = useState<string | null>(null);
@@ -32,11 +35,12 @@ export function ContactInfo() {
       <div className="flex flex-col gap-px overflow-hidden rounded-[4px] border border-line bg-line">
         {contactRows.map((c, i) => {
           const href = hrefFor[c.label]?.(c.value);
+          const copyText = c.label === "Office" ? officeAddress : c.value;
           const value = href ? (
             <a
               href={href}
               className="transition-colors hover:text-gold"
-              {...(c.label === "Website"
+              {...(external.has(c.label)
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
             >
@@ -59,7 +63,7 @@ export function ContactInfo() {
                   {copyable.has(c.label) ? (
                     <button
                       type="button"
-                      onClick={() => copy(c.label, c.value)}
+                      onClick={() => copy(c.label, copyText)}
                       className="rounded-[2px] px-2 py-1 text-[11px] font-semibold uppercase tracking-[1px] text-[#77828f] transition-colors hover:bg-navy hover:text-gold"
                       aria-label={`Copy ${c.label}`}
                     >
@@ -67,7 +71,7 @@ export function ContactInfo() {
                     </button>
                   ) : null}
                 </div>
-                <div className="mt-2 font-serif text-[21px] text-[#1b2634]">
+                <div className="mt-2 font-serif text-[21px] leading-[1.35] text-[#1b2634]">
                   {value}
                 </div>
                 <div className="mt-1 text-[13.5px] text-[#77828f]">{c.sub}</div>
