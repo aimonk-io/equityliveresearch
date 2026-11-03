@@ -1,5 +1,12 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32">
-  <rect width="32" height="32" rx="6" fill="#0e1f38"/>
-  <circle cx="16" cy="16" r="10" fill="none" stroke="#c6a052" stroke-width="1.4"/>
-  <text x="16" y="21" text-anchor="middle" font-family="Georgia, 'Times New Roman', serif" font-size="15" font-weight="600" fill="#c6a052">E</text>
+<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32">
+  <rect width="32" height="32" rx="7" fill="#0e1f38"/>
+  <g fill="#c6a052" fill-opacity="0.55">
+    <rect x="6.5" y="18" width="4.2" height="7.5" rx="1.1"/>
+    <rect x="13.9" y="14" width="4.2" height="11.5" rx="1.1"/>
+    <rect x="21.3" y="10" width="4.2" height="15.5" rx="1.1"/>
+  </g>
+  <g fill="none" stroke="#d3ae63" stroke-width="2.1" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M6 19.5 L13 15.2 L20 10.4 L26.5 6"/>
+    <path d="M22 6 L26.5 6 L26.5 10.5"/>
+  </g>
 </svg>

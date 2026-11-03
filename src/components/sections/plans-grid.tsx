@@ -1,5 +1,12 @@
+"use client";
+
+import { m } from "motion/react";
+
+import { AnimatedCard } from "@/components/animations/AnimatedCard";
+import { FadeIn } from "@/components/animations/FadeIn";
 import { CtaLink } from "@/components/ui/primitives";
-import { plans,type PlanVariant } from "@/config/site";
+import { plans, type PlanVariant } from "@/config/site";
+import { cn } from "@/lib/cn";
 
 const variantStyles: Record<
   PlanVariant,
@@ -26,7 +33,7 @@ const variantStyles: Record<
     fg: "text-[#9a9384]",
   },
   featured: {
-    card: "border-white/[0.14] bg-navy text-cream",
+    card: "border-white/[0.14] bg-navy text-cream shadow-[0_28px_56px_-28px_rgba(14,31,56,0.55)]",
     ret: "text-gold",
     muted: "text-[#9aa7bd]",
     line: "bg-white/[0.12]",
@@ -38,20 +45,36 @@ export function PlansGrid() {
   return (
     <section className="mx-auto max-w-[1240px] px-6 py-[72px] sm:px-8">
       <div className="grid items-stretch gap-5 sm:grid-cols-2 lg:grid-cols-4">
-        {plans.map((pl) => {
+        {plans.map((pl, i) => {
           const s = variantStyles[pl.variant];
           return (
-            <div
+            <AnimatedCard
               key={pl.name}
-              className={`relative flex flex-col rounded-[6px] border px-[26px] py-8 ${s.card}`}
+              index={i}
+              className={cn(
+                "relative flex flex-col rounded-[6px] border px-[26px] py-8 transition-shadow duration-300",
+                s.card,
+                pl.featured &&
+                  "ring-1 ring-gold/40 hover:shadow-[0_32px_64px_-28px_rgba(198,160,82,0.35)]",
+                !pl.featured &&
+                  !pl.disabled &&
+                  "hover:shadow-[0_24px_48px_-28px_rgba(14,31,56,0.22)]",
+              )}
             >
               {pl.featured ? (
-                <span className="absolute -top-[11px] left-[26px] rounded-full bg-gold px-3 py-[5px] text-[11px] font-bold uppercase tracking-[1px] text-navy">
+                <m.span
+                  initial={{ opacity: 0, y: -6 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  className="absolute -top-[11px] left-[26px] rounded-full bg-gold px-3 py-[5px] text-[11px] font-bold uppercase tracking-[1px] text-navy shadow-[0_0_20px_-4px_rgba(198,160,82,0.7)]"
+                >
                   Most Popular
-                </span>
+                </m.span>
               ) : null}
               <h3 className="font-serif text-[24px] font-medium">{pl.name}</h3>
-              <div className={`my-[18px] mb-1 font-serif text-[52px] font-medium ${s.ret}`}>
+              <div
+                className={`my-[18px] mb-1 font-serif text-[52px] font-medium ${s.ret}`}
+              >
                 {pl.ret}
               </div>
               <div className={`text-[13px] tracking-[0.3px] ${s.muted}`}>
@@ -77,15 +100,17 @@ export function PlansGrid() {
                   {pl.cta}
                 </CtaLink>
               )}
-            </div>
+            </AnimatedCard>
           );
         })}
       </div>
-      <p className="mx-auto mt-6 max-w-[760px] text-center text-[12.5px] leading-[1.6] text-[#77828f]">
-        Expected returns are based on market performance and are not assured.
-        Investments in securities are subject to market risks; past performance
-        does not guarantee future returns.
-      </p>
+      <FadeIn delay={0.2}>
+        <p className="mx-auto mt-6 max-w-[760px] text-center text-[12.5px] leading-[1.6] text-[#77828f]">
+          Expected returns are based on market performance and are not assured.
+          Investments in securities are subject to market risks; past performance
+          does not guarantee future returns.
+        </p>
+      </FadeIn>
     </section>
   );
 }

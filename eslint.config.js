@@ -1,15 +1,7 @@
-import { dirname } from "node:path";
-import { fileURLToPath } from "node:url";
-import { FlatCompat } from "@eslint/eslintrc";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
+import nextVitals from "eslint-config-next/core-web-vitals";
+import nextTs from "eslint-config-next/typescript";
 
 /** @type {import("eslint").Linter.Config[]} */
-const config = [...compat.extends("next/core-web-vitals", "next/typescript")];
+const config = [...nextVitals, ...nextTs];
 
 export default config;

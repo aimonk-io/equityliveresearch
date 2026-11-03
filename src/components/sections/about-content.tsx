@@ -1,3 +1,7 @@
+"use client";
+
+import { AnimatedCard } from "@/components/animations/AnimatedCard";
+import { FadeIn } from "@/components/animations/FadeIn";
 import { values, values_about } from "@/config/site";
 
 const pillars = [
@@ -9,36 +13,47 @@ const pillars = [
 export function AboutContent() {
   return (
     <section className="mx-auto max-w-[1000px] px-6 py-20 sm:px-8">
-      <p className="font-serif text-[24px] leading-[1.6] text-[#222f40]">
-        {values_about.lead}
-      </p>
-      <p className="mt-6 text-[16.5px] leading-[1.8] text-muted-ink">
-        {values_about.body}
-      </p>
+      <FadeIn blur>
+        <p className="font-serif text-[24px] leading-[1.6] text-[#222f40]">
+          {values_about.lead}
+        </p>
+      </FadeIn>
+      <FadeIn delay={0.1}>
+        <p className="mt-6 text-[16.5px] leading-[1.8] text-muted-ink">
+          {values_about.body}
+        </p>
+      </FadeIn>
 
       <div className="mt-16 grid gap-px border border-line bg-line md:grid-cols-3">
-        {pillars.map((p) => (
-          <div key={p.title} className="bg-cream-card p-[38px]">
-            <h3 className="font-serif text-[15px] uppercase tracking-[1.5px] text-gold">
+        {pillars.map((p, i) => (
+          <AnimatedCard
+            key={p.title}
+            index={i}
+            className="bg-cream-card p-[38px] transition-shadow duration-300 hover:shadow-[inset_0_0_0_1px_rgba(198,160,82,0.3)]"
+          >
+            <h3 className="font-serif text-[15px] uppercase tracking-[1.5px] text-gold transition-transform duration-300 group-hover:translate-x-0.5">
               {p.title}
             </h3>
             <p className="mt-3.5 text-[16px] leading-[1.7] text-[#2a3543]">
               {p.body}
             </p>
-          </div>
+          </AnimatedCard>
         ))}
       </div>
 
-      <h2 className="mt-[76px] font-serif text-[34px] font-medium tracking-[-0.5px] max-md:text-[28px]">
-        Our Values
-      </h2>
+      <FadeIn className="mt-[76px]">
+        <h2 className="font-serif text-[34px] font-medium tracking-[-0.5px] max-md:text-[28px]">
+          Our Values
+        </h2>
+      </FadeIn>
       <div className="mt-[30px] grid gap-5 md:grid-cols-2">
-        {values.map((v) => (
-          <div
+        {values.map((v, i) => (
+          <AnimatedCard
             key={v.n}
-            className="flex items-start gap-[18px] rounded-[4px] border border-line-soft bg-cream-card p-6"
+            index={i}
+            className="flex items-start gap-[18px] rounded-[4px] border border-line-soft bg-cream-card p-6 transition-shadow duration-300 hover:shadow-[0_20px_40px_-28px_rgba(14,31,56,0.25)]"
           >
-            <span className="font-serif text-[26px] leading-none text-gold">
+            <span className="font-serif text-[26px] leading-none text-gold transition-transform duration-300 group-hover:scale-110">
               {v.n}
             </span>
             <div>
@@ -49,7 +64,7 @@ export function AboutContent() {
                 {v.desc}
               </p>
             </div>
-          </div>
+          </AnimatedCard>
         ))}
       </div>
     </section>
