@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { BrandMark, Wordmark } from "@/components/layout/brand-mark";
-import { navItems, siteConfig } from "@/config/site";
+import { navItems, officeAddress, siteConfig } from "@/config/site";
 
 export function SiteFooter() {
   return (
@@ -55,20 +55,37 @@ export function SiteFooter() {
             <div className="mb-[14px] text-[12px] uppercase tracking-[1.5px] text-[#7c869c]">
               Office
             </div>
-            <div className="text-[14px] leading-[1.7] text-[#c6cede]">
-              {siteConfig.officeCity}
+            <a
+              href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(officeAddress)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block text-[14px] leading-[1.7] text-[#c6cede] hover:text-gold"
+            >
+              {siteConfig.office.line1.split(", ")[0]}
               <br />
-              {siteConfig.officeCountry}
-            </div>
+              {siteConfig.office.line1.split(", ")[1]}
+              <br />
+              {siteConfig.office.street}
+              <br />
+              {siteConfig.office.city} {siteConfig.office.postalCode}
+              <br />
+              {siteConfig.office.district}
+              <br />
+              {siteConfig.office.region}
+              <br />
+              {siteConfig.office.country}
+            </a>
           </div>
         </div>
 
         <div className="my-[22px] mt-9 h-px bg-white/[0.08]" />
         <div className="flex flex-wrap justify-between gap-5 text-[12.5px] text-[#7c869c]">
           <span>
-            © {new Date().getFullYear()} {siteConfig.name}. All rights reserved.
+            © {new Date().getFullYear()} {siteConfig.legalName} All rights reserved.
           </span>
-          <span>SEBI RA Reg. No. {siteConfig.sebiRegNo} · NISM Certified</span>
+          <span>
+            CIN: {siteConfig.cin} · SEBI RA Reg. No. {siteConfig.sebiRegNo}
+          </span>
         </div>
       </div>
     </footer>

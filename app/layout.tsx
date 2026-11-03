@@ -54,7 +54,21 @@ const jsonLd = {
   url: siteConfig.url,
   description: siteConfig.description,
   email: siteConfig.email,
+  telephone: siteConfig.phone,
   areaServed: "IN",
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "CIN",
+    value: siteConfig.cin,
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: `${siteConfig.office.line1}, ${siteConfig.office.street}`,
+    addressLocality: siteConfig.office.city,
+    addressRegion: siteConfig.office.region,
+    postalCode: siteConfig.office.postalCode,
+    addressCountry: siteConfig.office.countryCode,
+  },
 };
 
 export default function RootLayout({

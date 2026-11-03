@@ -1,10 +1,14 @@
-import { contactRows, siteConfig } from "@/config/site";
+import { contactRows, officeAddress, siteConfig } from "@/config/site";
 
 const hrefFor: Record<string, (v: string) => string | undefined> = {
   Phone: () => `tel:${siteConfig.phone}`,
   Email: () => `mailto:${siteConfig.email}`,
-  Website: () => `https://${siteConfig.websiteDisplay}`,
+  Website: () => siteConfig.url,
+  Office: () =>
+    `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(officeAddress)}`,
 };
+
+const external = new Set(["Website", "Office"]);
 
 export function ContactInfo() {
   return (
@@ -16,7 +20,7 @@ export function ContactInfo() {
             <a
               href={href}
               className="hover:text-gold"
-              {...(c.label === "Website"
+              {...(external.has(c.label)
                 ? { target: "_blank", rel: "noopener noreferrer" }
                 : {})}
             >
@@ -30,7 +34,7 @@ export function ContactInfo() {
               <div className="text-[11.5px] uppercase tracking-[2px] text-gold">
                 {c.label}
               </div>
-              <div className="mt-2 font-serif text-[21px] text-[#1b2634]">
+              <div className="mt-2 font-serif text-[21px] leading-[1.35] text-[#1b2634]">
                 {value}
               </div>
               <div className="mt-1 text-[13.5px] text-[#77828f]">{c.sub}</div>
